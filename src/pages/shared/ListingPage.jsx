@@ -1,12 +1,17 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { listings } from '../../localContent'
 
 export default function ListingPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const listing = listings.find(item => item.listingId === id);
 
   if (!listing) return <div className="p-4">Listing not found.</div>;
+
+  function goHome(){
+    navigate('/login')
+  }
 
   return (
     <div className="max-w-screen-xl mx-auto p-4">
@@ -63,7 +68,7 @@ export default function ListingPage() {
         {/* Right Column - Sticky Booking Box */}
         <div className="w-full lg:w-[300px] h-fit sticky top-24 border border-gray-200 p-4 rounded-xl shadow-sm">
           <div className="text-xl font-semibold mb-2">{listing.price}</div>
-          <button className="bg-rose-500 hover:bg-rose-600 text-white py-2 px-4 rounded-lg w-full">
+          <button onClick={goHome} className="bg-rose-500 hover:bg-rose-600 text-white py-2 px-4 rounded-lg w-full">
             Book
           </button>
         </div>

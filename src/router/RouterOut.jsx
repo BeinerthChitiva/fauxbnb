@@ -7,6 +7,7 @@ const HostPage = lazy(() => import('../pages/out/HostPage'));
 const SignupPage = lazy(() => import('../pages/out/SignupPage'));
 const LoginPage = lazy(() => import('../pages/out/LoginPage'));
 const HelpPage = lazy(() => import('../pages/out/HelpPage'));
+const ListingPage = lazy(() => import('../pages/shared/ListingPage'));
 
 export default function RouterOut(){
     return(
@@ -19,6 +20,7 @@ export default function RouterOut(){
                 <Route path="/signup" element={<SignupPage/>}/>
                 <Route path="/login" element={<LoginPage/>}/>
                 <Route path="/help" element={<HelpPage/>}/>
+                <Route path="/listing/:id" element={<ListingPage />} />
                 <Route path="*" element={<Navigate to="/home" />} />
             </Routes>
         </Suspense>

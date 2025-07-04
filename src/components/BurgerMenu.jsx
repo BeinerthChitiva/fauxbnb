@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
 import avatarPlaceholder from '../assets/placeholderAvatar.jpg';
@@ -7,6 +7,7 @@ import avatarPlaceholder from '../assets/placeholderAvatar.jpg';
 export default function BurgerMenu(){
     const { isLoggedIn, logout } = useAuth()
     const [isOpen, setIsOpen] = useState(false)
+    const menuRef = useRef(null)
 
     function toggleDropdown(){
         setIsOpen(prev => !prev)
@@ -23,18 +24,36 @@ export default function BurgerMenu(){
         { name: 'Login', path: '/login' },
         { name: 'Host', path: '/host' },
         { name: 'Help', path: '/help' },
-      ];
+    ];
     
-      const userLinks = [
+    const userLinks = [
         { name: 'Bookings', path: '/bookings' },
         { name: 'Favorites', path: '/favorites' },
         { name: 'Host', path: '/host' },
         { name: 'Account', path: '/account' },
         { name: 'Help', path: '/help' },
-      ];
+    ];
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsOpen(false)
+            }
+        }
+
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside)
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [isOpen])
 
     return(
-        <div className="relative">
+        <div className="relative" ref={menuRef}>
             <button onClick={toggleDropdown} className="flex items-center justify-between w-[86px] h-[48px] px-3 py-2 rounded-full border shadow-sm hover:shadow-md transition">
                 <span className="text-lg">☰</span>
                 <img

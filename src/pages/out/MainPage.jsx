@@ -1,4 +1,4 @@
-import ListingCard from '../../components/ListingCard';
+import ListingCard from '../../components/organisms/ListingCard';
 import { listings } from '../../localContent';
 
 export default function MainPage() {

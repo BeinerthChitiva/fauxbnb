@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import logo from '../assets/fauxbnblogo.png';
-import BurgerMenu from './BurgerMenu';
+import logo from '../../assets/fauxbnblogo.png'
+import BurgerMenu from '../molecules/BurgerMenu';
 
 export default function NavbarOut() {
   return (

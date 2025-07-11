@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../../context/AuthContext'
 import { Link } from 'react-router-dom'
-import avatarPlaceholder from '../assets/placeholderAvatar.jpg';
+import avatarPlaceholder from '../../assets/placeholderAvatar.jpg'
 
 
 export default function BurgerMenu(){

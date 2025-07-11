@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import NavbarOut from "../components/NavbarOut";
+import NavbarOut from "../components/organisms/NavbarOut";
 
 const MainPage = lazy(() => import('../pages/out/MainPage'));
 const HostPage = lazy(() => import('../pages/out/HostPage'));
